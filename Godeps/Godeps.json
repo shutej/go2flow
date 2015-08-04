@@ -1,0 +1,17 @@
+{
+	"ImportPath": "github.com/shutej/go2flow",
+	"GoVersion": "go1.4",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/segmentio/go-camelcase",
+			"Rev": "b569e89d6314f2c40cf0c783e92979897fc67005"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v1",
+			"Rev": "1b9791953ba4027efaeb728c7355e542a203be5e"
+		}
+	]
+}
