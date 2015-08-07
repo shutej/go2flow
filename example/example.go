@@ -1,6 +1,7 @@
 package testdata
 
 //go:generate go2flow --yml go2flow.yml --out flow
+//go:generate babel flow -s -o flow.js
 
 import "time"
 
