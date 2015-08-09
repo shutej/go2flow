@@ -356,14 +356,6 @@ var _go2flow = require("./go2flow");
 
 var go2flow = _interopRequireWildcard(_go2flow);
 
-var _anonymous_T0 = require("./anonymous_T0");
-
-var anonymous_T0 = _interopRequireWildcard(_anonymous_T0);
-
-var _anonymous_T1 = require("./anonymous_T1");
-
-var anonymous_T1 = _interopRequireWildcard(_anonymous_T1);
-
 var _anonymous_T2 = require("./anonymous_T2");
 
 var anonymous_T2 = _interopRequireWildcard(_anonymous_T2);
@@ -371,6 +363,14 @@ var anonymous_T2 = _interopRequireWildcard(_anonymous_T2);
 var _anonymous_T3 = require("./anonymous_T3");
 
 var anonymous_T3 = _interopRequireWildcard(_anonymous_T3);
+
+var _anonymous_T0 = require("./anonymous_T0");
+
+var anonymous_T0 = _interopRequireWildcard(_anonymous_T0);
+
+var _anonymous_T1 = require("./anonymous_T1");
+
+var anonymous_T1 = _interopRequireWildcard(_anonymous_T1);
 
 function empty() {
   return { aStringObject: anonymous_T0.empty(), aIntObject: anonymous_T1.empty(), aFloatObject: anonymous_T2.empty(), aBoolObject: anonymous_T3.empty() };
