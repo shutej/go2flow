@@ -54,6 +54,12 @@ func (self *TypeGenerator) VisitPtr(name string, resume func()) {
 	})
 }
 
+func (self *TypeGenerator) VisitBytes(name string, resume func()) {
+	self.withType(name, func() {
+		self.printf("string")
+	})
+}
+
 func (self *TypeGenerator) VisitSlice(name string, resume func()) {
 	self.withType(name, func() {
 		self.printf("Array<")

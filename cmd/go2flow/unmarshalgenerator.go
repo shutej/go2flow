@@ -49,6 +49,12 @@ func (self *UnmarshalGenerator) VisitPtr(name string, resume func()) {
 	self.visitIdentity(name, resume)
 }
 
+func (self *UnmarshalGenerator) VisitBytes(name string, resume func()) {
+	self.withUnmarshal(name, func() {
+		self.printf("atob")
+	})
+}
+
 func (self *UnmarshalGenerator) VisitSlice(name string, resume func()) {
 	self.withUnmarshal(name, func() {
 		self.printf("go2flow.fmapArray(")

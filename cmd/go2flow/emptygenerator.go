@@ -53,6 +53,12 @@ func (self *EmptyGenerator) VisitPtr(name string, resume func()) {
 	})
 }
 
+func (self *EmptyGenerator) VisitBytes(name string, resume func()) {
+	self.withEmpty(name, func() {
+		self.printf("%q", "")
+	})
+}
+
 func (self *EmptyGenerator) VisitSlice(name string, resume func()) {
 	self.withEmpty(name, func() {
 		self.printf("[]")

@@ -54,6 +54,12 @@ func (self *MarshalTypeGenerator) VisitPtr(name string, resume func()) {
 	})
 }
 
+func (self *MarshalTypeGenerator) VisitBytes(name string, resume func()) {
+	self.withType(name, func() {
+		self.printf("string")
+	})
+}
+
 func (self *MarshalTypeGenerator) VisitSlice(name string, resume func()) {
 	self.withType(name, func() {
 		self.printf("Array<")

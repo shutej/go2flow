@@ -14,6 +14,7 @@ const (
 	Float
 	Bool
 	Ptr
+	Bytes
 	Slice
 	Struct
 	Map
@@ -55,6 +56,8 @@ func (self *Type) Visit(visitor Interface) {
 		visitor.VisitBool(self.Name, resume)
 	case Ptr:
 		visitor.VisitPtr(self.Name, resumeElem)
+	case Bytes:
+		visitor.VisitBytes(self.Name, resume)
 	case Slice:
 		visitor.VisitSlice(self.Name, resumeElem)
 	case Struct:
@@ -129,6 +132,9 @@ func getTypes(t reflect.Type, s supportingTypes, c *int) *Type {
 			return ptrOf(getTypes(t.Elem(), s, c))
 		})
 	case reflect.Array, reflect.Slice:
+		if t.Elem().Kind() == reflect.Uint8 {
+			return simple(Bytes)
+		}
 		return s.set(n, p, func() *Type {
 			return arrayOf(getTypes(t.Elem(), s, c))
 		})

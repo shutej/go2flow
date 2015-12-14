@@ -50,6 +50,12 @@ func (self *MarshalGenerator) VisitPtr(name string, resume func()) {
 	self.visitIdentity(name, resume)
 }
 
+func (self *MarshalGenerator) VisitBytes(name string, resume func()) {
+	self.withMarshal(name, func() {
+		self.printf("btoa")
+	})
+}
+
 func (self *MarshalGenerator) VisitSlice(name string, resume func()) {
 	self.withMarshal(name, func() {
 		self.printf("go2flow.fmapArray(")

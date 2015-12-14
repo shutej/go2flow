@@ -6,6 +6,7 @@ type Interface interface {
 	VisitFloat(name string, resume func())
 	VisitBool(name string, resume func())
 	VisitPtr(name string, resume func())
+	VisitBytes(name string, resume func())
 	VisitSlice(name string, resume func())
 	VisitStruct(name string, fields []Field, resume func())
 	VisitStructField(field Field, resume func())
@@ -33,6 +34,10 @@ func (self *Visitor) VisitBool(name string, resume func()) {
 }
 
 func (self *Visitor) VisitPtr(name string, resume func()) {
+	resume()
+}
+
+func (self *Visitor) VisitBytes(name string, resume func()) {
 	resume()
 }
 

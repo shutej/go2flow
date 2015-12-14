@@ -11,6 +11,7 @@ type EmbeddedStruct struct {
 	AInt    int     `json:"aInt,omitempty"`
 	AFloat  float64 `json:"aFloat,omitempty"`
 	ABool   bool    `json:"aBool,omitempty"`
+	AByte   byte    `json:"aByte,omitempty"`
 }
 
 type Test1 struct {
@@ -18,6 +19,7 @@ type Test1 struct {
 	AInt    int     `json:"aInt"`
 	AFloat  float64 `json:"aFloat"`
 	ABool   bool    `json:"aBool"`
+	AByte   byte    `json:"aByte"`
 }
 
 type Test2 struct {
@@ -25,6 +27,7 @@ type Test2 struct {
 	AIntPtr    *int     `json:"aIntPtr"`
 	AFloatPtr  *float64 `json:"aFloatPtr"`
 	ABoolPtr   *bool    `json:"aBoolPtr"`
+	ABytePtr   *byte    `json:"aBytePtr"`
 }
 
 type Test3 struct {
@@ -32,6 +35,7 @@ type Test3 struct {
 	AIntSlice    []int     `json:"aIntSlice"`
 	AFloatSlice  []float64 `json:"aFloatSlice"`
 	ABoolSlice   []bool    `json:"aBoolSlice"`
+	AByteSlice   []byte    `json:"aByteSlice"`
 }
 
 type Test4 struct {
@@ -39,6 +43,7 @@ type Test4 struct {
 	AIntObject    struct{ X int }     `json:"aIntObject"`
 	AFloatObject  struct{ X float64 } `json:"aFloatObject"`
 	ABoolObject   struct{ X bool }    `json:"aBoolObject"`
+	AByteObject   struct{ X byte }    `json:"aByteObject"`
 }
 
 type Test5 struct {
@@ -46,6 +51,7 @@ type Test5 struct {
 	AIntMap    map[string]int     `json:"aIntMap"`
 	AFloatMap  map[string]float64 `json:"aFloatMap"`
 	ABoolMap   map[string]bool    `json:"aBoolMap"`
+	AByteMap   map[string]byte    `json:"aByteMap"`
 
 	EmbeddedStruct
 }
