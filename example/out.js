@@ -1,17 +1,5 @@
 
 
-import * as testdata_Test1 from "./testdata_Test1";
-import * as testdata_Test2 from "./testdata_Test2";
-import * as testdata_Test3 from "./testdata_Test3";
-import * as testdata_Test4 from "./testdata_Test4";
-import * as testdata_Test5 from "./testdata_Test5";
-import * as testdata_Test6 from "./testdata_Test6";
-import * as testdata_Test7 from "./testdata_Test7";
-import * as testdata_Test8 from "./testdata_Test8";
-import * as testdata_Test9 from "./testdata_Test9";
-import * as testdata_Test10 from "./testdata_Test10";
-
-
 import * as go2flow from "./go2flow";
 
 export function empty() {
@@ -99,33 +87,6 @@ export function unmarshal(x) {
   return (function (x) {
     return { x: go2flow.identity(x.X) };
   })(x);
-}
-
-
-export function identity(x) {
-  return x;
-}
-
-export function fmapArray(fn) {
-  return function (x) {
-    if (!x) {
-      return [];
-    }
-    return x.map(fn);
-  };
-}
-
-export function fmapObject(fn) {
-  return function (x) {
-    var retval = {};
-    if (!x) {
-      return retval;
-    }
-    for (var key in x) {
-      retval[key] = fn(x[key]);
-    }
-    return retval;
-  };
 }
 
 
@@ -241,47 +202,47 @@ export function unmarshal(x) {
 
 import * as go2flow from "./go2flow";
 
-import * as testdata_EmbeddedStruct from "./testdata_EmbeddedStruct";
+import * as example_EmbeddedStruct from "./example_EmbeddedStruct";
 
 export function empty() {
-  return { aStringMap: new Map(), aIntMap: new Map(), aFloatMap: new Map(), aBoolMap: new Map(), aByteMap: new Map(), embeddedStruct: testdata_EmbeddedStruct.empty() };
+  return { aStringMap: new Map(), aIntMap: new Map(), aFloatMap: new Map(), aBoolMap: new Map(), aByteMap: new Map(), embeddedStruct: example_EmbeddedStruct.empty() };
 }
 
 export function marshal(x) {
   return (function (x) {
-    return { aStringMap: go2flow.fmapObject(go2flow.identity)(x.aStringMap), aIntMap: go2flow.fmapObject(go2flow.identity)(x.aIntMap), aFloatMap: go2flow.fmapObject(go2flow.identity)(x.aFloatMap), aBoolMap: go2flow.fmapObject(go2flow.identity)(x.aBoolMap), aByteMap: go2flow.fmapObject(go2flow.identity)(x.aByteMap), EmbeddedStruct: testdata_EmbeddedStruct.marshal(x.embeddedStruct) };
+    return { aStringMap: go2flow.fmapObject(go2flow.identity)(x.aStringMap), aIntMap: go2flow.fmapObject(go2flow.identity)(x.aIntMap), aFloatMap: go2flow.fmapObject(go2flow.identity)(x.aFloatMap), aBoolMap: go2flow.fmapObject(go2flow.identity)(x.aBoolMap), aByteMap: go2flow.fmapObject(go2flow.identity)(x.aByteMap), EmbeddedStruct: example_EmbeddedStruct.marshal(x.embeddedStruct) };
   })(x);
 }
 export function unmarshal(x) {
   return (function (x) {
-    return { aStringMap: go2flow.fmapObject(go2flow.identity)(x.aStringMap), aIntMap: go2flow.fmapObject(go2flow.identity)(x.aIntMap), aFloatMap: go2flow.fmapObject(go2flow.identity)(x.aFloatMap), aBoolMap: go2flow.fmapObject(go2flow.identity)(x.aBoolMap), aByteMap: go2flow.fmapObject(go2flow.identity)(x.aByteMap), embeddedStruct: testdata_EmbeddedStruct.unmarshal(x.EmbeddedStruct) };
+    return { aStringMap: go2flow.fmapObject(go2flow.identity)(x.aStringMap), aIntMap: go2flow.fmapObject(go2flow.identity)(x.aIntMap), aFloatMap: go2flow.fmapObject(go2flow.identity)(x.aFloatMap), aBoolMap: go2flow.fmapObject(go2flow.identity)(x.aBoolMap), aByteMap: go2flow.fmapObject(go2flow.identity)(x.aByteMap), embeddedStruct: example_EmbeddedStruct.unmarshal(x.EmbeddedStruct) };
   })(x);
 }
 
 
 import * as go2flow from "./go2flow";
 
-import * as testdata_EmbeddedStruct from "./testdata_EmbeddedStruct";
+import * as example_EmbeddedStruct from "./example_EmbeddedStruct";
 
 export function empty() {
-  return { embeddedStruct: testdata_EmbeddedStruct.empty() };
+  return { embeddedStruct: example_EmbeddedStruct.empty() };
 }
 
 export function marshal(x) {
   return (function (x) {
-    return { EmbeddedStruct: testdata_EmbeddedStruct.marshal(x.embeddedStruct) };
+    return { EmbeddedStruct: example_EmbeddedStruct.marshal(x.embeddedStruct) };
   })(x);
 }
 export function unmarshal(x) {
   return (function (x) {
-    return { embeddedStruct: testdata_EmbeddedStruct.unmarshal(x.EmbeddedStruct) };
+    return { embeddedStruct: example_EmbeddedStruct.unmarshal(x.EmbeddedStruct) };
   })(x);
 }
 
 
 import * as go2flow from "./go2flow";
 
-import * as testdata_Test2 from "./testdata_Test2";
+import * as example_Test2 from "./example_Test2";
 
 export function empty() {
   return null;
@@ -297,7 +258,7 @@ export function unmarshal(x) {
 
 import * as go2flow from "./go2flow";
 
-import * as testdata_Test2 from "./testdata_Test2";
+import * as example_Test2 from "./example_Test2";
 
 export function empty() {
   return [];
@@ -328,6 +289,33 @@ export function unmarshal(x) {
   return (function (x) {
     return { x: time_Time.unmarshal(x.X) };
   })(x);
+}
+
+
+export function identity(x) {
+  return x;
+}
+
+export function fmapArray(fn) {
+  return function (x) {
+    if (!x) {
+      return [];
+    }
+    return x.map(fn);
+  };
+}
+
+export function fmapObject(fn) {
+  return function (x) {
+    var retval = {};
+    if (!x) {
+      return retval;
+    }
+    for (var key in x) {
+      retval[key] = fn(x[key]);
+    }
+    return retval;
+  };
 }
 
 
@@ -377,4 +365,4 @@ export function marshal(d) {
   return pad("0000", d.getUTCFullYear()) + "-" + pad("00", d.getUTCMonth() + 1) + "-" + pad("00", d.getUTCDate()) + "T" + pad("00", d.getUTCHours()) + ":" + pad("00", d.getUTCMinutes()) + ":" + pad("00", d.getUTCSeconds()) + "Z";
 }
 
-//# sourceMappingURL=flow.js.map
+//# sourceMappingURL=out.js.map
