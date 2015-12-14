@@ -19,8 +19,8 @@ default looking for `go2flow.yml` in the current working directory.  This
 package [includes an example](example/go2flow.yml) of just such a file.
 
 This package has [example Go types](example/example.go) and
-[the corresponding Flow-typed output](example/flow/).  Note, in particular,
-[the custom time.Time implementation](example/flow/time_Time.js) which
+[the corresponding Flow-typed output](example/gen/).  Note, in particular,
+[the custom time.Time implementation](example/gen/time_Time.js) which
 demonstrates how Javascript can be customized for specific types using Go's
 [Marshaler](http://golang.org/pkg/encoding/json/#Marshaler) and
 [Unmarshaler](http://golang.org/pkg/encoding/json/#Unmarshaler).
@@ -29,8 +29,20 @@ You may consider making a synthetic package so `go generate` will compile your
 Flow static assets for you:
 
 ```go
-//go:generate go2flow --yml go2flow.yml --out out
+//go:generate go2flow --yml go2flow.yml --out gen
 ```
 
-Consider using the [react preset](http://babeljs.io/docs/plugins/preset-react/)
-or something like it from your [.babelrc](example/.babelrc).
+You may consider making this package type-check your code with `flow`:
+
+```go
+//go:generate flow
+```
+
+Finally, you might use `webpack` to bundle the generated code directly from
+your entrypoint:
+
+```go
+//go:generate webpack
+```
+
+The [example package](example/example.go) illustrates this.

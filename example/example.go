@@ -1,8 +1,8 @@
 package example
 
-//go:generate go2flow --yml go2flow.yml --out out
+//go:generate go2flow --yml go2flow.yml --out gen
 //go:generate flow
-//go:generate babel out -s -o out.js
+//go:generate webpack
 
 import "time"
 
