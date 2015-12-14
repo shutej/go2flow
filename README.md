@@ -31,3 +31,6 @@ Flow static assets for you:
 ```go
 //go:generate go2flow --yml go2flow.yml --out out
 ```
+
+Consider using the [react preset](http://babeljs.io/docs/plugins/preset-react/)
+or something like it from your [.babelrc](example/.babelrc).
