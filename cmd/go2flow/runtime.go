@@ -28,4 +28,11 @@ export function fmapObject<T, U>(fn: (t: T) => U): (m: ?{ [k: string]: T }) => {
   };
 }
 
+export function bytesUnmarshal(x: ?string): string {
+  if (!x) {
+    return "";
+  }
+  return atob(x);
+}
+
 `

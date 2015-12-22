@@ -51,7 +51,7 @@ func (self *UnmarshalGenerator) VisitPtr(name string, resume func()) {
 
 func (self *UnmarshalGenerator) VisitBytes(name string, resume func()) {
 	self.withUnmarshal(name, func() {
-		self.printf("atob")
+		self.printf("go2flow.bytesUnmarshal")
 	})
 }
 

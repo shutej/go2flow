@@ -172,7 +172,7 @@
 	        if (_.isEqual(x, this.expected)) {
 	          console.log("[ OK ] get(%o)", this.url);
 	        } else {
-	          console.log("[FAIL] get(%o)", this.url);
+	          console.log("[FAIL] get(%o): %o vs. %o", this.url, x, this.expected);
 	        }
 	      }).bind(this), (function () {
 	        console.log("[FAIL] get(%o)", this.url);
@@ -1275,6 +1275,7 @@
 	exports.identity = identity;
 	exports.fmapArray = fmapArray;
 	exports.fmapObject = fmapObject;
+	exports.bytesUnmarshal = bytesUnmarshal;
 	function identity(x) {
 	  return x;
 	}
@@ -1299,6 +1300,13 @@
 	    }
 	    return retval;
 	  };
+	}
+	
+	function bytesUnmarshal(x) {
+	  if (!x) {
+	    return "";
+	  }
+	  return atob(x);
 	}
 
 /***/ },
@@ -1363,7 +1371,7 @@
 	}
 	function unmarshal(x) {
 	  return (function (x) {
-	    return { aStringSlice: go2flow.fmapArray(go2flow.identity)(x.aStringSlice), aIntSlice: go2flow.fmapArray(go2flow.identity)(x.aIntSlice), aFloatSlice: go2flow.fmapArray(go2flow.identity)(x.aFloatSlice), aBoolSlice: go2flow.fmapArray(go2flow.identity)(x.aBoolSlice), aByteSlice: atob(x.aByteSlice) };
+	    return { aStringSlice: go2flow.fmapArray(go2flow.identity)(x.aStringSlice), aIntSlice: go2flow.fmapArray(go2flow.identity)(x.aIntSlice), aFloatSlice: go2flow.fmapArray(go2flow.identity)(x.aFloatSlice), aBoolSlice: go2flow.fmapArray(go2flow.identity)(x.aBoolSlice), aByteSlice: go2flow.bytesUnmarshal(x.aByteSlice) };
 	  })(x);
 	}
 
@@ -1386,23 +1394,23 @@
 	
 	var _anonymous_T = __webpack_require__(61);
 	
-	var anonymous_T0 = _interopRequireWildcard(_anonymous_T);
+	var anonymous_T2 = _interopRequireWildcard(_anonymous_T);
 	
 	var _anonymous_T2 = __webpack_require__(62);
 	
-	var anonymous_T1 = _interopRequireWildcard(_anonymous_T2);
+	var anonymous_T3 = _interopRequireWildcard(_anonymous_T2);
 	
 	var _anonymous_T3 = __webpack_require__(63);
 	
-	var anonymous_T2 = _interopRequireWildcard(_anonymous_T3);
+	var anonymous_T4 = _interopRequireWildcard(_anonymous_T3);
 	
 	var _anonymous_T4 = __webpack_require__(64);
 	
-	var anonymous_T3 = _interopRequireWildcard(_anonymous_T4);
+	var anonymous_T0 = _interopRequireWildcard(_anonymous_T4);
 	
 	var _anonymous_T5 = __webpack_require__(65);
 	
-	var anonymous_T4 = _interopRequireWildcard(_anonymous_T5);
+	var anonymous_T1 = _interopRequireWildcard(_anonymous_T5);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -1440,7 +1448,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: "" };
+	  return { x: 0.0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1473,7 +1481,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0 };
+	  return { x: false };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1506,7 +1514,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0.0 };
+	  return { x: 0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1539,7 +1547,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: false };
+	  return { x: "" };
 	}
 	function marshal(x) {
 	  return (function (x) {

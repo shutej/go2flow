@@ -56,7 +56,7 @@ class IntegrationTest<T, MarshalT> extends Wrapper<T, MarshalT> {
         if (_.isEqual(x, this.expected)) {
           console.log("[ OK ] get(%o)", this.url);
         } else {
-          console.log("[FAIL] get(%o)", this.url);
+          console.log("[FAIL] get(%o): %o vs. %o", this.url, x, this.expected);
         }
       }.bind(this),
       function() {
