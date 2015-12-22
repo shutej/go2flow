@@ -180,11 +180,11 @@ var tests: Array<{ run: () => void }> = [];
   test4.unmarshal = example_Test4.unmarshal;
   test4.empty = example_Test4.empty;
   test4.expected = {
-    aStringObject: { X: "a string" },
-    aIntObject:    { X: 1 },
-    aFloatObject:  { X: 1.2 },
-    aBoolObject:   { X: true },
-    aByteObject:   { X: 65 },
+    aStringObject: { x: "a string" },
+    aIntObject:    { x: 1 },
+    aFloatObject:  { x: 1.2 },
+    aBoolObject:   { x: true },
+    aByteObject:   { x: 65 },
   };
   tests.push(test4);
 })();
