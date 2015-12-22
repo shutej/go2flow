@@ -12,7 +12,7 @@ export type T = window.Date;
 
 export function empty(): T {
   var tmp = new window.Date(window.Date.UTC(0, 0, 1, 0, 0, 0, 0));  // 1900AD
-  tmp.setUTCFullYear(0);  // 0AD
+  tmp.setUTCFullYear(1);  // 1AD
   return tmp;
 }
 
@@ -42,7 +42,10 @@ export function unmarshal(s: MarshalT): T {
   var tzMin  = +m[2] || 0;
 
   var tzOffset = new window.Date().getTimezoneOffset() + tzHour * 60 + tzMin;
-  return new window.Date(year, month - 1, day, hour, minute - tzOffset, second, msec);
+  var retval = new window.Date(0, month - 1, day, hour, minute - tzOffset, second, msec);
+  // Adjust for full year; date offset will be incorporated, above.
+  retval.setUTCFullYear(retval.getUTCFullYear() - 1900 + year);
+  return retval;
 }
 
 export function marshal(d: T): MarshalT {

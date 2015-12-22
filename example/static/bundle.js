@@ -412,6 +412,28 @@
 	  tests.push(test8);
 	})();
 	
+	(function test9_empty() {
+	  var test9 = new IntegrationTest();
+	  test9.url = "/test9_empty";
+	  test9.marshal = example_Test9.marshal;
+	  test9.unmarshal = example_Test9.unmarshal;
+	  test9.empty = example_Test9.empty;
+	  test9.expected = example_Test9.empty();
+	  tests.push(test9);
+	})();
+	
+	(function test9_full() {
+	  var test9 = new IntegrationTest();
+	  test9.url = "/test9_full";
+	  test9.marshal = example_Test9.marshal;
+	  test9.unmarshal = example_Test9.unmarshal;
+	  test9.empty = example_Test9.empty;
+	  test9.expected = {
+	    x: new window.Date(window.Date.UTC(2009, 1, 14, 23, 59, 59, 0))
+	  };
+	  tests.push(test9);
+	})();
+	
 	// Runs all tests.
 	tests.forEach(function (test) {
 	  test.run();
@@ -1529,23 +1551,23 @@
 	
 	var _anonymous_T = __webpack_require__(61);
 	
-	var anonymous_T1 = _interopRequireWildcard(_anonymous_T);
+	var anonymous_T0 = _interopRequireWildcard(_anonymous_T);
 	
 	var _anonymous_T2 = __webpack_require__(62);
 	
-	var anonymous_T2 = _interopRequireWildcard(_anonymous_T2);
+	var anonymous_T1 = _interopRequireWildcard(_anonymous_T2);
 	
 	var _anonymous_T3 = __webpack_require__(63);
 	
-	var anonymous_T3 = _interopRequireWildcard(_anonymous_T3);
+	var anonymous_T2 = _interopRequireWildcard(_anonymous_T3);
 	
 	var _anonymous_T4 = __webpack_require__(64);
 	
-	var anonymous_T4 = _interopRequireWildcard(_anonymous_T4);
+	var anonymous_T3 = _interopRequireWildcard(_anonymous_T4);
 	
 	var _anonymous_T5 = __webpack_require__(65);
 	
-	var anonymous_T0 = _interopRequireWildcard(_anonymous_T5);
+	var anonymous_T4 = _interopRequireWildcard(_anonymous_T5);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -1583,7 +1605,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0 };
+	  return { x: "" };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1616,7 +1638,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0.0 };
+	  return { x: 0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1649,7 +1671,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: false };
+	  return { x: 0.0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1682,7 +1704,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0 };
+	  return { x: false };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1715,7 +1737,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: "" };
+	  return { x: 0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1916,7 +1938,7 @@
 	
 	function empty() {
 	  var tmp = new window.Date(window.Date.UTC(0, 0, 1, 0, 0, 0, 0)); // 1900AD
-	  tmp.setUTCFullYear(0); // 0AD
+	  tmp.setUTCFullYear(1); // 1AD
 	  return tmp;
 	}
 	
@@ -1944,7 +1966,10 @@
 	  var tzMin = +m[2] || 0;
 	
 	  var tzOffset = new window.Date().getTimezoneOffset() + tzHour * 60 + tzMin;
-	  return new window.Date(year, month - 1, day, hour, minute - tzOffset, second, msec);
+	  var retval = new window.Date(0, month - 1, day, hour, minute - tzOffset, second, msec);
+	  // Adjust for full year; date offset will be incorporated, above.
+	  retval.setUTCFullYear(retval.getUTCFullYear() - 1900 + year);
+	  return retval;
 	}
 	
 	function marshal(d) {

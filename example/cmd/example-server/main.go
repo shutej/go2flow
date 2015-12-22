@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"reflect"
+	"time"
 
 	"github.com/gin-gonic/contrib/gzip"
 	"github.com/gin-gonic/contrib/static"
@@ -100,8 +101,11 @@ func main() {
 		eq := func(a, b interface{}) bool {
 			an := nilify(a.(*example.Test3))
 			bn := nilify(b.(*example.Test3))
+			if reflect.DeepEqual(an, bn) {
+				return true
+			}
 			log.Printf("FAIL: %#v != %#v", an, bn)
-			return reflect.DeepEqual(an, bn)
+			return false
 		}
 
 		integrationTest(router, "test3_empty", &example.Test3{}, eq)
@@ -150,8 +154,11 @@ func main() {
 		eq := func(a, b interface{}) bool {
 			an := nilify(a.(*example.Test5))
 			bn := nilify(b.(*example.Test5))
+			if reflect.DeepEqual(an, bn) {
+				return true
+			}
 			log.Printf("FAIL: %#v != %#v", an, bn)
-			return reflect.DeepEqual(an, bn)
+			return false
 		}
 
 		integrationTest(router, "test5_empty", &example.Test5{}, eq)
@@ -184,8 +191,11 @@ func main() {
 		eq := func(a, b interface{}) bool {
 			an := nilify(a.(*example.Test6))
 			bn := nilify(b.(*example.Test6))
+			if reflect.DeepEqual(an, bn) {
+				return true
+			}
 			log.Printf("FAIL: %#v != %#v", an, bn)
-			return reflect.DeepEqual(an, bn)
+			return false
 		}
 
 		integrationTest(router, "test6_empty", &example.Test6{}, eq)
@@ -232,8 +242,11 @@ func main() {
 		eq := func(a, b interface{}) bool {
 			an := nilify(a.(*example.Test8))
 			bn := nilify(b.(*example.Test8))
+			if reflect.DeepEqual(an, bn) {
+				return true
+			}
 			log.Printf("FAIL: %#v != %#v", an, bn)
-			return reflect.DeepEqual(an, bn)
+			return false
 		}
 
 		var test8Empty example.Test8
@@ -249,6 +262,20 @@ func main() {
 			},
 		}
 		integrationTest(router, "test8_full", &test8Full, eq)
+	}
+
+	{
+		eq := func(a, b interface{}) bool {
+			ap := a.(*example.Test9)
+			bp := b.(*example.Test9)
+			return ap.X.Equal(bp.X)
+		}
+
+		integrationTest(router, "test9_empty", &example.Test9{}, eq)
+
+		integrationTest(router, "test9_full", &example.Test9{
+			X: time.Date(2009, time.February, 14, 23, 59, 59, 0, time.UTC),
+		}, eq)
 	}
 
 	router.Run(*listen)

@@ -305,6 +305,28 @@ var tests: Array<{ run: () => void }> = [];
   tests.push(test8);
 })();
 
+(function test9_empty() {
+  var test9 = new IntegrationTest();
+  test9.url = "/test9_empty";
+  test9.marshal = example_Test9.marshal;
+  test9.unmarshal = example_Test9.unmarshal;
+  test9.empty = example_Test9.empty;
+  test9.expected = example_Test9.empty();
+  tests.push(test9);
+})();
+
+(function test9_full() {
+  var test9 = new IntegrationTest();
+  test9.url = "/test9_full";
+  test9.marshal = example_Test9.marshal;
+  test9.unmarshal = example_Test9.unmarshal;
+  test9.empty = example_Test9.empty;
+  test9.expected = {
+    x: new window.Date(window.Date.UTC(2009, 1, 14, 23, 59, 59, 0)),
+  };
+  tests.push(test9);
+})();
+
 // Runs all tests.
 tests.forEach(function(test) {
   test.run();
