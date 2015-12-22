@@ -83,7 +83,7 @@ func (self *EmptyGenerator) VisitStructField(field model.Field, resume func()) {
 
 func (self *EmptyGenerator) VisitMap(name string, resume func()) {
 	self.withEmpty(name, func() {
-		self.printf("new Map()")
+		self.printf("{}")
 	})
 }
 

@@ -56,7 +56,12 @@ class IntegrationTest<T, MarshalT> extends Wrapper<T, MarshalT> {
         if (_.isEqual(x, this.expected)) {
           console.log("[ OK ] get(%o)", this.url);
         } else {
-          console.log("[FAIL] get(%o): %o vs. %o", this.url, x, this.expected);
+          console.log(
+            "[FAIL] get(%o): expected: %o vs. actual: %o",
+            this.url,
+            this.expected,
+            x
+          );
         }
       }.bind(this),
       function() {
@@ -187,6 +192,32 @@ var tests: Array<{ run: () => void }> = [];
     aByteObject:   { x: 65 },
   };
   tests.push(test4);
+})();
+
+(function test5_empty() {
+  var test5 = new IntegrationTest();
+  test5.url = "/test5_empty";
+  test5.marshal = example_Test5.marshal;
+  test5.unmarshal = example_Test5.unmarshal;
+  test5.empty = example_Test5.empty;
+  test5.expected = example_Test5.empty();
+  tests.push(test5);
+})();
+
+(function test5_full() {
+  var test5 = new IntegrationTest();
+  test5.url = "/test5_full";
+  test5.marshal = example_Test5.marshal;
+  test5.unmarshal = example_Test5.unmarshal;
+  test5.empty = example_Test5.empty;
+  test5.expected = {
+    aStringMap: { x: "a string" },
+    aIntMap:    { x: 1 },
+    aFloatMap:  { x: 1.2 },
+    aBoolMap:   { x: true },
+    aByteMap:   { x: 65 },
+  };
+  tests.push(test5);
 })();
 
 // Runs all tests.

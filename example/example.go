@@ -52,8 +52,6 @@ type Test5 struct {
 	AFloatMap  map[string]float64 `json:"aFloatMap"`
 	ABoolMap   map[string]bool    `json:"aBoolMap"`
 	AByteMap   map[string]byte    `json:"aByteMap"`
-
-	EmbeddedStruct
 }
 
 type Test6 struct {
