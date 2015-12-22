@@ -327,6 +327,16 @@ var tests: Array<{ run: () => void }> = [];
   tests.push(test9);
 })();
 
+(function test10_empty() {
+  var test10 = new IntegrationTest();
+  test10.url = "/test10_empty";
+  test10.marshal = example_Test10.marshal;
+  test10.unmarshal = example_Test10.unmarshal;
+  test10.empty = example_Test10.empty;
+  test10.expected = example_Test10.empty();
+  tests.push(test10);
+})();
+
 // Runs all tests.
 tests.forEach(function(test) {
   test.run();

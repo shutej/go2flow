@@ -278,5 +278,10 @@ func main() {
 		}, eq)
 	}
 
+	{
+		var test10 example.Test10
+		integrationTest(router, "test10_empty", &test10, reflect.DeepEqual)
+	}
+
 	router.Run(*listen)
 }
