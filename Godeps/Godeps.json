@@ -1,6 +1,6 @@
 {
 	"ImportPath": "github.com/shutej/go2flow",
-	"GoVersion": "go1.4",
+	"GoVersion": "go1.5",
 	"Packages": [
 		"./..."
 	],
@@ -11,7 +11,7 @@
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v1",
-			"Rev": "1b9791953ba4027efaeb728c7355e542a203be5e"
+			"Rev": "9f9df34309c04878acc86042b16630b0f696e1de"
 		}
 	]
 }

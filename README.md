@@ -9,21 +9,14 @@ implemented in Go.
 
 ```sh
 go get -u github.com/shutej/go2flow/...
-go install github.com/shutej/go2flow/cmd/go2flow
+godep go install github.com/shutej/go2flow/cmd/go2flow
 ```
 
 ## Usage
 
 The tool looks for a list of packages and types to convert from a YAML file, by
-default looking for `go2flow.yml` in the current working directory.  This
-package [includes an example](example/go2flow.yml) of just such a file.
-
-This package has [example Go types](example/example.go) and
-[the corresponding Flow-typed output](example/gen/).  Note, in particular,
-[the custom time.Time implementation](example/gen/time_Time.js) which
-demonstrates how Javascript can be customized for specific types using Go's
-[Marshaler](http://golang.org/pkg/encoding/json/#Marshaler) and
-[Unmarshaler](http://golang.org/pkg/encoding/json/#Unmarshaler).
+default looking for `go2flow.yml` in the current working directory.  For an
+example of usage, see [the test](http://github.com/shutej/go2flow_test).
 
 You may consider making a synthetic package so `go generate` will compile your
 Flow static assets for you:
@@ -44,5 +37,3 @@ your entrypoint:
 ```go
 //go:generate webpack
 ```
-
-The [example package](example/example.go) illustrates this.
