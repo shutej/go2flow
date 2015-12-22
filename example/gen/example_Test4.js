@@ -2,11 +2,11 @@
 
 import * as go2flow from "./go2flow";
 
-import * as anonymous_T0 from "./anonymous_T0";
 import * as anonymous_T1 from "./anonymous_T1";
 import * as anonymous_T2 from "./anonymous_T2";
 import * as anonymous_T3 from "./anonymous_T3";
 import * as anonymous_T4 from "./anonymous_T4";
+import * as anonymous_T0 from "./anonymous_T0";
 
 export type T = { aStringObject: anonymous_T0.T; aIntObject: anonymous_T1.T; aFloatObject: anonymous_T2.T; aBoolObject: anonymous_T3.T; aByteObject: anonymous_T4.T; };
 export function empty(): T { return { aStringObject: anonymous_T0.empty(), aIntObject: anonymous_T1.empty(), aFloatObject: anonymous_T2.empty(), aBoolObject: anonymous_T3.empty(), aByteObject: anonymous_T4.empty() }; }

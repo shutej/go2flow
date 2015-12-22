@@ -221,5 +221,35 @@ func main() {
 		integrationTest(router, "test7_full", &test7Full, reflect.DeepEqual)
 	}
 
+	{
+		nilify := func(a *example.Test8) *example.Test8 {
+			if a != nil && len(*a) == 0 {
+				return nil
+			}
+			return a
+		}
+
+		eq := func(a, b interface{}) bool {
+			an := nilify(a.(*example.Test8))
+			bn := nilify(b.(*example.Test8))
+			log.Printf("FAIL: %#v != %#v", an, bn)
+			return reflect.DeepEqual(an, bn)
+		}
+
+		var test8Empty example.Test8
+		integrationTest(router, "test8_empty", &test8Empty, eq)
+
+		var test8Full example.Test8 = []*example.Test1{
+			&example.Test1{
+				AString: "a string",
+				AInt:    1,
+				AFloat:  1.2,
+				ABool:   true,
+				AByte:   65,
+			},
+		}
+		integrationTest(router, "test8_full", &test8Full, eq)
+	}
+
 	router.Run(*listen)
 }
