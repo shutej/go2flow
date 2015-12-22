@@ -360,6 +360,32 @@
 	  tests.push(test6);
 	})();
 	
+	(function test7_empty() {
+	  var test7 = new IntegrationTest();
+	  test7.url = "/test7_empty";
+	  test7.marshal = example_Test7.marshal;
+	  test7.unmarshal = example_Test7.unmarshal;
+	  test7.empty = example_Test7.empty;
+	  test7.expected = example_Test7.empty();
+	  tests.push(test7);
+	})();
+	
+	(function test7_full() {
+	  var test7 = new IntegrationTest();
+	  test7.url = "/test7_full";
+	  test7.marshal = example_Test7.marshal;
+	  test7.unmarshal = example_Test7.unmarshal;
+	  test7.empty = example_Test7.empty;
+	  test7.expected = {
+	    aString: "a string",
+	    aInt: 1,
+	    aFloat: 1.2,
+	    aBool: true,
+	    aByte: 65
+	  };
+	  tests.push(test7);
+	})();
+	
 	// Runs all tests.
 	tests.forEach(function (test) {
 	  test.run();
@@ -1477,23 +1503,23 @@
 	
 	var _anonymous_T = __webpack_require__(61);
 	
-	var anonymous_T1 = _interopRequireWildcard(_anonymous_T);
+	var anonymous_T0 = _interopRequireWildcard(_anonymous_T);
 	
 	var _anonymous_T2 = __webpack_require__(62);
 	
-	var anonymous_T2 = _interopRequireWildcard(_anonymous_T2);
+	var anonymous_T1 = _interopRequireWildcard(_anonymous_T2);
 	
 	var _anonymous_T3 = __webpack_require__(63);
 	
-	var anonymous_T3 = _interopRequireWildcard(_anonymous_T3);
+	var anonymous_T2 = _interopRequireWildcard(_anonymous_T3);
 	
 	var _anonymous_T4 = __webpack_require__(64);
 	
-	var anonymous_T4 = _interopRequireWildcard(_anonymous_T4);
+	var anonymous_T3 = _interopRequireWildcard(_anonymous_T4);
 	
 	var _anonymous_T5 = __webpack_require__(65);
 	
-	var anonymous_T0 = _interopRequireWildcard(_anonymous_T5);
+	var anonymous_T4 = _interopRequireWildcard(_anonymous_T5);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -1531,7 +1557,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0 };
+	  return { x: "" };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1564,7 +1590,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0.0 };
+	  return { x: 0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1597,7 +1623,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: false };
+	  return { x: 0.0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1630,7 +1656,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0 };
+	  return { x: false };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1663,7 +1689,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: "" };
+	  return { x: 0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1759,9 +1785,9 @@
 	
 	var go2flow = _interopRequireWildcard(_go2flow);
 	
-	var _example_Test = __webpack_require__(58);
+	var _example_Test = __webpack_require__(56);
 	
-	var example_Test2 = _interopRequireWildcard(_example_Test);
+	var example_Test1 = _interopRequireWildcard(_example_Test);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -1792,9 +1818,9 @@
 	
 	var go2flow = _interopRequireWildcard(_go2flow);
 	
-	var _example_Test = __webpack_require__(58);
+	var _example_Test = __webpack_require__(56);
 	
-	var example_Test2 = _interopRequireWildcard(_example_Test);
+	var example_Test1 = _interopRequireWildcard(_example_Test);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	

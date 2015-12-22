@@ -60,12 +60,12 @@ type Test5 struct {
 
 type Test6 struct {
 	EmbeddedStruct
-	AInt2 int // no renaming
+	AInt2 int
 }
 
-type Test7 *Test2
+type Test7 *Test1
 
-type Test8 []*Test2
+type Test8 []*Test1
 
 type Test9 struct {
 	X time.Time

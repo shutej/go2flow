@@ -207,5 +207,19 @@ func main() {
 		}, eq)
 	}
 
+	{
+		var test7Empty example.Test7
+		integrationTest(router, "test7_empty", &test7Empty, reflect.DeepEqual)
+
+		var test7Full example.Test7 = &example.Test1{
+			AString: "a string",
+			AInt:    1,
+			AFloat:  1.2,
+			ABool:   true,
+			AByte:   65,
+		}
+		integrationTest(router, "test7_full", &test7Full, reflect.DeepEqual)
+	}
+
 	router.Run(*listen)
 }
