@@ -98,7 +98,6 @@ func (self *TypeGenerator) VisitCustom(name string, resume func()) {
 }
 
 func (self *TypeGenerator) VisitReference(name string, resume func()) {
-	// TODO(shutej): This, probably.
 	if self.stack.top() == name {
 		self.printf("T")
 	} else {

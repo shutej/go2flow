@@ -2,10 +2,8 @@
 
 import * as go2flow from "./go2flow";
 
-import * as example_EmbeddedStruct from "./example_EmbeddedStruct";
-
-export type T = { embeddedStruct: example_EmbeddedStruct.T; };
-export function empty(): T { return { embeddedStruct: example_EmbeddedStruct.empty() }; }
-export type MarshalT = { EmbeddedStruct: example_EmbeddedStruct.MarshalT; };
-export function marshal(x: T): MarshalT { return (function(x) { return { EmbeddedStruct: example_EmbeddedStruct.marshal(x.embeddedStruct) }; })(x); }
-export function unmarshal(x: MarshalT): T { return (function(x) { return { embeddedStruct: example_EmbeddedStruct.unmarshal(x.EmbeddedStruct) }; })(x); }
+export type T = { aString: string; aInt: number; aFloat: number; aBool: boolean; aByte: number; aIntPtr: ?number; aIntSlice: Array<number>; aIntMap: { [k: string]: number }; aByteSlice: string; aint2: number; };
+export function empty(): T { return { aString: "", aInt: 0, aFloat: 0.0, aBool: false, aByte: 0, aIntPtr: null, aIntSlice: [], aIntMap: {}, aByteSlice: "", aint2: 0 }; }
+export type MarshalT = { aString: string; aInt: number; aFloat: number; aBool: boolean; aByte: number; aIntPtr: ?number; aIntSlice: Array<number>; aIntMap: { [k: string]: number }; aByteSlice: ?string; AInt2: number; };
+export function marshal(x: T): MarshalT { return (function(x) { return { aString: go2flow.identity(x.aString), aInt: go2flow.identity(x.aInt), aFloat: go2flow.identity(x.aFloat), aBool: go2flow.identity(x.aBool), aByte: go2flow.identity(x.aByte), aIntPtr: go2flow.identity(x.aIntPtr), aIntSlice: go2flow.fmapArray(go2flow.identity)(x.aIntSlice), aIntMap: go2flow.fmapObject(go2flow.identity)(x.aIntMap), aByteSlice: btoa(x.aByteSlice), AInt2: go2flow.identity(x.aint2) }; })(x); }
+export function unmarshal(x: MarshalT): T { return (function(x) { return { aString: (x.hasOwnProperty("aString") ? go2flow.identity(x.aString) : ""), aInt: (x.hasOwnProperty("aInt") ? go2flow.identity(x.aInt) : 0), aFloat: (x.hasOwnProperty("aFloat") ? go2flow.identity(x.aFloat) : 0.0), aBool: (x.hasOwnProperty("aBool") ? go2flow.identity(x.aBool) : false), aByte: (x.hasOwnProperty("aByte") ? go2flow.identity(x.aByte) : 0), aIntPtr: (x.hasOwnProperty("aIntPtr") ? go2flow.identity(x.aIntPtr) : null), aIntSlice: (x.hasOwnProperty("aIntSlice") ? go2flow.fmapArray(go2flow.identity)(x.aIntSlice) : []), aIntMap: (x.hasOwnProperty("aIntMap") ? go2flow.fmapObject(go2flow.identity)(x.aIntMap) : {}), aByteSlice: (x.hasOwnProperty("aByteSlice") ? go2flow.bytesUnmarshal(x.aByteSlice) : ""), aint2: go2flow.identity(x.AInt2) }; })(x); }

@@ -161,7 +161,7 @@ func getTypes(t reflect.Type, s supportingTypes, c *int) *Type {
 
 func getFields(t reflect.Type, s supportingTypes, c *int) []Field {
 	fields := []Field{}
-	// TODO(shutej): Anonymous fields?
+
 	n := t.NumField()
 	for i := 0; i < n; i++ {
 		field := t.Field(i)
@@ -173,6 +173,13 @@ func getFields(t reflect.Type, s supportingTypes, c *int) []Field {
 			continue
 		}
 		name, opts := parseTag(tag)
+
+		// This is an embedded field.
+		if name == "" && field.Anonymous && field.Type.Kind() == reflect.Struct {
+			fields = append(fields, getFields(field.Type, s, c)...)
+			continue
+		}
+
 		if name == "" {
 			name = field.Name
 		}
@@ -183,6 +190,7 @@ func getFields(t reflect.Type, s supportingTypes, c *int) []Field {
 			Index:     len(fields),
 			OmitEmpty: opts.Contains("omitempty"),
 		})
+		continue
 	}
 	return fields
 }

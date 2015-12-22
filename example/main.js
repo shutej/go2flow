@@ -220,6 +220,37 @@ var tests: Array<{ run: () => void }> = [];
   tests.push(test5);
 })();
 
+(function test6_empty() {
+  var test6 = new IntegrationTest();
+  test6.url = "/test6_empty";
+  test6.marshal = example_Test6.marshal;
+  test6.unmarshal = example_Test6.unmarshal;
+  test6.empty = example_Test6.empty;
+  test6.expected = example_Test6.empty();
+  tests.push(test6);
+})();
+
+(function test6_full() {
+  var test6 = new IntegrationTest();
+  test6.url = "/test6_full";
+  test6.marshal = example_Test6.marshal;
+  test6.unmarshal = example_Test6.unmarshal;
+  test6.empty = example_Test6.empty;
+  test6.expected = {
+    aString:    "a string",
+    aInt:       1,
+    aFloat:     1.2,
+    aBool:      true,
+    aByte:      65,
+    aIntPtr:    1,
+    aIntSlice:  [1],
+    aIntMap:    { x: 1 },
+    aByteSlice: "A",
+    aint2:      2,
+  };
+  tests.push(test6);
+})();
+
 // Runs all tests.
 tests.forEach(function(test) {
   test.run();

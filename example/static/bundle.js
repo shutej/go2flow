@@ -98,19 +98,19 @@
 	
 	var example_Test6 = _interopRequireWildcard(_example_Test6);
 	
-	var _example_Test7 = __webpack_require__(69);
+	var _example_Test7 = __webpack_require__(68);
 	
 	var example_Test7 = _interopRequireWildcard(_example_Test7);
 	
-	var _example_Test8 = __webpack_require__(70);
+	var _example_Test8 = __webpack_require__(69);
 	
 	var example_Test8 = _interopRequireWildcard(_example_Test8);
 	
-	var _example_Test9 = __webpack_require__(71);
+	var _example_Test9 = __webpack_require__(70);
 	
 	var example_Test9 = _interopRequireWildcard(_example_Test9);
 	
-	var _example_Test10 = __webpack_require__(73);
+	var _example_Test10 = __webpack_require__(72);
 	
 	var example_Test10 = _interopRequireWildcard(_example_Test10);
 	
@@ -327,6 +327,37 @@
 	    aByteMap: { x: 65 }
 	  };
 	  tests.push(test5);
+	})();
+	
+	(function test6_empty() {
+	  var test6 = new IntegrationTest();
+	  test6.url = "/test6_empty";
+	  test6.marshal = example_Test6.marshal;
+	  test6.unmarshal = example_Test6.unmarshal;
+	  test6.empty = example_Test6.empty;
+	  test6.expected = example_Test6.empty();
+	  tests.push(test6);
+	})();
+	
+	(function test6_full() {
+	  var test6 = new IntegrationTest();
+	  test6.url = "/test6_full";
+	  test6.marshal = example_Test6.marshal;
+	  test6.unmarshal = example_Test6.unmarshal;
+	  test6.empty = example_Test6.empty;
+	  test6.expected = {
+	    aString: "a string",
+	    aInt: 1,
+	    aFloat: 1.2,
+	    aBool: true,
+	    aByte: 65,
+	    aIntPtr: 1,
+	    aIntSlice: [1],
+	    aIntMap: { x: 1 },
+	    aByteSlice: "A",
+	    aint2: 2
+	  };
+	  tests.push(test6);
 	})();
 	
 	// Runs all tests.
@@ -1446,23 +1477,23 @@
 	
 	var _anonymous_T = __webpack_require__(61);
 	
-	var anonymous_T0 = _interopRequireWildcard(_anonymous_T);
+	var anonymous_T1 = _interopRequireWildcard(_anonymous_T);
 	
 	var _anonymous_T2 = __webpack_require__(62);
 	
-	var anonymous_T1 = _interopRequireWildcard(_anonymous_T2);
+	var anonymous_T2 = _interopRequireWildcard(_anonymous_T2);
 	
 	var _anonymous_T3 = __webpack_require__(63);
 	
-	var anonymous_T2 = _interopRequireWildcard(_anonymous_T3);
+	var anonymous_T3 = _interopRequireWildcard(_anonymous_T3);
 	
 	var _anonymous_T4 = __webpack_require__(64);
 	
-	var anonymous_T3 = _interopRequireWildcard(_anonymous_T4);
+	var anonymous_T4 = _interopRequireWildcard(_anonymous_T4);
 	
 	var _anonymous_T5 = __webpack_require__(65);
 	
-	var anonymous_T4 = _interopRequireWildcard(_anonymous_T5);
+	var anonymous_T0 = _interopRequireWildcard(_anonymous_T5);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -1500,7 +1531,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: "" };
+	  return { x: 0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1533,7 +1564,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0 };
+	  return { x: 0.0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1566,7 +1597,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0.0 };
+	  return { x: false };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1599,7 +1630,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: false };
+	  return { x: 0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1632,7 +1663,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { x: 0 };
+	  return { x: "" };
 	}
 	function marshal(x) {
 	  return (function (x) {
@@ -1695,61 +1726,24 @@
 	
 	var go2flow = _interopRequireWildcard(_go2flow);
 	
-	var _example_EmbeddedStruct = __webpack_require__(68);
-	
-	var example_EmbeddedStruct = _interopRequireWildcard(_example_EmbeddedStruct);
-	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function empty() {
-	  return { embeddedStruct: example_EmbeddedStruct.empty() };
+	  return { aString: "", aInt: 0, aFloat: 0.0, aBool: false, aByte: 0, aIntPtr: null, aIntSlice: [], aIntMap: {}, aByteSlice: "", aint2: 0 };
 	}
 	function marshal(x) {
 	  return (function (x) {
-	    return { EmbeddedStruct: example_EmbeddedStruct.marshal(x.embeddedStruct) };
+	    return { aString: go2flow.identity(x.aString), aInt: go2flow.identity(x.aInt), aFloat: go2flow.identity(x.aFloat), aBool: go2flow.identity(x.aBool), aByte: go2flow.identity(x.aByte), aIntPtr: go2flow.identity(x.aIntPtr), aIntSlice: go2flow.fmapArray(go2flow.identity)(x.aIntSlice), aIntMap: go2flow.fmapObject(go2flow.identity)(x.aIntMap), aByteSlice: btoa(x.aByteSlice), AInt2: go2flow.identity(x.aint2) };
 	  })(x);
 	}
 	function unmarshal(x) {
 	  return (function (x) {
-	    return { embeddedStruct: example_EmbeddedStruct.unmarshal(x.EmbeddedStruct) };
+	    return { aString: x.hasOwnProperty("aString") ? go2flow.identity(x.aString) : "", aInt: x.hasOwnProperty("aInt") ? go2flow.identity(x.aInt) : 0, aFloat: x.hasOwnProperty("aFloat") ? go2flow.identity(x.aFloat) : 0.0, aBool: x.hasOwnProperty("aBool") ? go2flow.identity(x.aBool) : false, aByte: x.hasOwnProperty("aByte") ? go2flow.identity(x.aByte) : 0, aIntPtr: x.hasOwnProperty("aIntPtr") ? go2flow.identity(x.aIntPtr) : null, aIntSlice: x.hasOwnProperty("aIntSlice") ? go2flow.fmapArray(go2flow.identity)(x.aIntSlice) : [], aIntMap: x.hasOwnProperty("aIntMap") ? go2flow.fmapObject(go2flow.identity)(x.aIntMap) : {}, aByteSlice: x.hasOwnProperty("aByteSlice") ? go2flow.bytesUnmarshal(x.aByteSlice) : "", aint2: go2flow.identity(x.AInt2) };
 	  })(x);
 	}
 
 /***/ },
 /* 68 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.empty = empty;
-	exports.marshal = marshal;
-	exports.unmarshal = unmarshal;
-	
-	var _go2flow = __webpack_require__(57);
-	
-	var go2flow = _interopRequireWildcard(_go2flow);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function empty() {
-	  return { aString: "", aInt: 0, aFloat: 0.0, aBool: false, aByte: 0 };
-	}
-	function marshal(x) {
-	  return (function (x) {
-	    return { aString: go2flow.identity(x.aString), aInt: go2flow.identity(x.aInt), aFloat: go2flow.identity(x.aFloat), aBool: go2flow.identity(x.aBool), aByte: go2flow.identity(x.aByte) };
-	  })(x);
-	}
-	function unmarshal(x) {
-	  return (function (x) {
-	    return { aString: x.hasOwnProperty("aString") ? go2flow.identity(x.aString) : "", aInt: x.hasOwnProperty("aInt") ? go2flow.identity(x.aInt) : 0, aFloat: x.hasOwnProperty("aFloat") ? go2flow.identity(x.aFloat) : 0.0, aBool: x.hasOwnProperty("aBool") ? go2flow.identity(x.aBool) : false, aByte: x.hasOwnProperty("aByte") ? go2flow.identity(x.aByte) : 0 };
-	  })(x);
-	}
-
-/***/ },
-/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1782,7 +1776,7 @@
 	}
 
 /***/ },
-/* 70 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1815,7 +1809,7 @@
 	}
 
 /***/ },
-/* 71 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1831,7 +1825,7 @@
 	
 	var go2flow = _interopRequireWildcard(_go2flow);
 	
-	var _time_Time = __webpack_require__(72);
+	var _time_Time = __webpack_require__(71);
 	
 	var time_Time = _interopRequireWildcard(_time_Time);
 	
@@ -1852,7 +1846,7 @@
 	}
 
 /***/ },
-/* 72 */
+/* 71 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1911,7 +1905,7 @@
 	}
 
 /***/ },
-/* 73 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

@@ -64,3 +64,11 @@ func (self *Visitor) VisitCustom(name string, resume func()) {
 func (self *Visitor) VisitReference(name string, resume func()) {
 	resume()
 }
+
+type EmbeddedStructVisitor struct {
+	Interface
+}
+
+func (self *EmbeddedStructVisitor) VisitStruct(name string, fields []Field, resume func()) {
+	resume()
+}

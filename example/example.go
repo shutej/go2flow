@@ -7,11 +7,15 @@ package example
 import "time"
 
 type EmbeddedStruct struct {
-	AString string  `json:"aString,omitempty"`
-	AInt    int     `json:"aInt,omitempty"`
-	AFloat  float64 `json:"aFloat,omitempty"`
-	ABool   bool    `json:"aBool,omitempty"`
-	AByte   byte    `json:"aByte,omitempty"`
+	AString    string         `json:"aString,omitempty"`
+	AInt       int            `json:"aInt,omitempty"`
+	AFloat     float64        `json:"aFloat,omitempty"`
+	ABool      bool           `json:"aBool,omitempty"`
+	AByte      byte           `json:"aByte,omitempty"`
+	AIntPtr    *int           `json:"aIntPtr,omitempty"`
+	AIntSlice  []int          `json:"aIntSlice,omitempty"`
+	AIntMap    map[string]int `json:"aIntMap,omitempty"`
+	AByteSlice []byte         `json:"aByteSlice,omitempty"`
 }
 
 type Test1 struct {
@@ -56,6 +60,7 @@ type Test5 struct {
 
 type Test6 struct {
 	EmbeddedStruct
+	AInt2 int // no renaming
 }
 
 type Test7 *Test2

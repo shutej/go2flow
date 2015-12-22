@@ -165,5 +165,47 @@ func main() {
 		}, eq)
 	}
 
+	{
+		nilify := func(a *example.Test6) *example.Test6 {
+			b := &example.Test6{}
+			*b = *a
+			if len(b.AIntSlice) == 0 {
+				b.AIntSlice = nil
+			}
+			if len(b.AIntMap) == 0 {
+				b.AIntMap = nil
+			}
+			if len(b.AByteSlice) == 0 {
+				b.AByteSlice = nil
+			}
+			return b
+		}
+
+		eq := func(a, b interface{}) bool {
+			an := nilify(a.(*example.Test6))
+			bn := nilify(b.(*example.Test6))
+			log.Printf("FAIL: %#v != %#v", an, bn)
+			return reflect.DeepEqual(an, bn)
+		}
+
+		integrationTest(router, "test6_empty", &example.Test6{}, eq)
+
+		intPtr := 1
+		integrationTest(router, "test6_full", &example.Test6{
+			EmbeddedStruct: example.EmbeddedStruct{
+				AString:    "a string",
+				AInt:       1,
+				AFloat:     1.2,
+				ABool:      true,
+				AByte:      65,
+				AIntPtr:    &intPtr,
+				AIntSlice:  []int{1},
+				AIntMap:    map[string]int{"x": 1},
+				AByteSlice: []byte{65},
+			},
+			AInt2: 2,
+		}, eq)
+	}
+
 	router.Run(*listen)
 }
