@@ -163,6 +163,32 @@ var tests: Array<{ run: () => void }> = [];
   tests.push(test3);
 })();
 
+(function test4_empty() {
+  var test4 = new IntegrationTest();
+  test4.url = "/test4_empty";
+  test4.marshal = example_Test4.marshal;
+  test4.unmarshal = example_Test4.unmarshal;
+  test4.empty = example_Test4.empty;
+  test4.expected = example_Test4.empty();
+  tests.push(test4);
+})();
+
+(function test4_full() {
+  var test4 = new IntegrationTest();
+  test4.url = "/test4_full";
+  test4.marshal = example_Test4.marshal;
+  test4.unmarshal = example_Test4.unmarshal;
+  test4.empty = example_Test4.empty;
+  test4.expected = {
+    aStringObject: { X: "a string" },
+    aIntObject:    { X: 1 },
+    aFloatObject:  { X: 1.2 },
+    aBoolObject:   { X: true },
+    aByteObject:   { X: 65 },
+  };
+  tests.push(test4);
+})();
+
 // Runs all tests.
 tests.forEach(function(test) {
   test.run();

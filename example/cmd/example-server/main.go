@@ -16,7 +16,7 @@ var (
 	listen = flag.String("listen", ":80", "port to listen on")
 )
 
-func roundtrip(router *gin.Engine, name string, expected interface{}, eq func(a, b interface{}) bool) {
+func integrationTest(router *gin.Engine, name string, expected interface{}, eq func(a, b interface{}) bool) {
 	get := func(ctx *gin.Context) {
 		ctx.JSON(200, expected)
 	}
@@ -48,9 +48,9 @@ func main() {
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.Use(static.Serve("/", static.LocalFile("static", true)))
 
-	roundtrip(router, "test1_empty", &example.Test1{}, reflect.DeepEqual)
+	integrationTest(router, "test1_empty", &example.Test1{}, reflect.DeepEqual)
 
-	roundtrip(router, "test1_full", &example.Test1{
+	integrationTest(router, "test1_full", &example.Test1{
 		AString: "a string",
 		AInt:    1,
 		AFloat:  1.2,
@@ -58,14 +58,14 @@ func main() {
 		AByte:   65,
 	}, reflect.DeepEqual)
 
-	roundtrip(router, "test2_empty", &example.Test2{}, reflect.DeepEqual)
+	integrationTest(router, "test2_empty", &example.Test2{}, reflect.DeepEqual)
 
 	stringPtr := "a string"
 	intPtr := 1
 	floatPtr := 1.2
 	boolPtr := true
 	bytePtr := byte(65)
-	roundtrip(router, "test2_full", &example.Test2{
+	integrationTest(router, "test2_full", &example.Test2{
 		AStringPtr: &stringPtr,
 		AIntPtr:    &intPtr,
 		AFloatPtr:  &floatPtr,
@@ -102,15 +102,25 @@ func main() {
 	}
 
 	// XXX(shutej): This test is broken.
-	roundtrip(router, "test3_empty", &example.Test3{}, eq)
+	integrationTest(router, "test3_empty", &example.Test3{}, eq)
 
-	roundtrip(router, "test3_full", &example.Test3{
+	integrationTest(router, "test3_full", &example.Test3{
 		AStringSlice: []string{"a string"},
 		AIntSlice:    []int{1},
 		AFloatSlice:  []float64{1.2},
 		ABoolSlice:   []bool{true},
 		AByteSlice:   []byte{65},
 	}, eq)
+
+	integrationTest(router, "test4_empty", &example.Test4{}, reflect.DeepEqual)
+
+	integrationTest(router, "test4_full", &example.Test4{
+		AStringObject: struct{ X string }{"a string"},
+		AIntObject:    struct{ X int }{1},
+		AFloatObject:  struct{ X float64 }{1.2},
+		ABoolObject:   struct{ X bool }{true},
+		AByteObject:   struct{ X byte }{65},
+	}, reflect.DeepEqual)
 
 	router.Run(*listen)
 }
